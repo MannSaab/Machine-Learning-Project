@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+df=pd.read_excel(r"F:\By teachers UMS\Machine Learning Foundation\Project for end term\DATA-FINAL.xls")
+print(df.head())
+#print(df.info())
+import matplotlib.pyplot as plt
+import seaborn as sns
+allcolumns=df.columns
+for item in allcolumns:
+    print(df[item].nunique())
+correl=df.corr()
+print(correl)
+sns.countplot(df["Grade"])
+plt.show()
+print(df.Grade.nunique())
+df1=df.dropna()# delete all rows having NAN
+from sklearn.model_selection import train_test_split
+#Creating features and label for dataset
+x=df1.drop(["Grade","Regd No","Termid","Course","MHRDName","Height","Weight","ScholarType","CA_1","CA_2","CA_3","CA_4","Direction","Gender","Medium","CourseType","ProgramType"],axis=1)
+y=df1["Grade"]
+print(x)
+print(y)
